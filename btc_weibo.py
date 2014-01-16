@@ -47,6 +47,7 @@ def post_weibo():
     for i in range(0,3):
         try:
             status = get_btc_weibo_status()
+            print status,len(status)
             print api.statuses.update.post(status=status)
         except Exception:
             pass
@@ -55,7 +56,7 @@ def post_weibo():
 
 def get_btc_weibo_status():
 
-    status = u""
+    status = u"#比特币#"
 
     #huobi
     result = get_price_from_btc123("huobi")
