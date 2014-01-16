@@ -44,8 +44,14 @@ def post_weibo():
     access_token="2.00xI_xjBWxeIcE51cd36244fYG5I1B"
     expires_in=1390503601
     api.set_access_token(access_token, expires_in)
-    status = get_btc_weibo_status()
-    print api.statuses.update.post(status=status)
+    for i in range(0,3):
+        try:
+            status = get_btc_weibo_status()
+            print api.statuses.update.post(status=status)
+        except Exception:
+            pass
+        else:
+            break
 
 def get_btc_weibo_status():
 
