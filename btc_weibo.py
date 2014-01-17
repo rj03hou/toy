@@ -9,6 +9,11 @@ import time
 import json
 import weibo
 import webbrowser
+import sys
+import traceback
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 APP_KEY = '4228096170' # app key
 MY_APP_SECRET = '47b967f4877cf755f1b1fdebbddf63a7' # app secret
@@ -24,6 +29,7 @@ def get_price_from_btc123(platform):
     return result
 
 def post_weibo():
+    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
     api = weibo.APIClient(APP_KEY, MY_APP_SECRET)
 
     ##第一次获取的时候需要在命令行中输入浏览器后面的code，来获取access_token
@@ -49,8 +55,8 @@ def post_weibo():
             status = get_btc_weibo_status()
             print status,len(status)
             print api.statuses.update.post(status=status)
-        except Exception:
-            pass
+        except:
+            print traceback.print_exc()
         else:
             break
 
