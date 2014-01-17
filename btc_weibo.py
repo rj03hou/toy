@@ -24,6 +24,7 @@ def get_price_from_btc123(platform):
     return result
 
 def post_weibo():
+    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))  
     api = weibo.APIClient(APP_KEY, MY_APP_SECRET)
 
     ##第一次获取的时候需要在命令行中输入浏览器后面的code，来获取access_token
